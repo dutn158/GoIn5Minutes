@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"io/ioutil"
 	"net/http"
 
 	"github.com/dutn158/GoIn5Minutes/episode1/storage"
@@ -18,7 +19,7 @@ func PutKey(db storage.DB) http.Handler {
 		}
 
 		defer r.Body.Close()
-
+		val, err := ioutil.ReadAll(r.Body)
 		if err != nil {
 			http.Error(w, "error reading PUT body", http.StatusBadRequest)
 			return
