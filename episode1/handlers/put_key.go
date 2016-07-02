@@ -13,19 +13,19 @@ func PutKey(db storage.DB) http.Handler {
 		key := r.URL.Query().Get("key")
 
 		if key == "" {
-			http.Error(w, "missing key name in path", http.StatusBadRequest)
+			http.Error(w, Error("missing key name in path"), http.StatusBadRequest)
 			return
 		}
 
 		defer r.Body.Close()
 
 		if err != nil {
-			http.Error(w, "error reading PUT body", http.StatusBadRequest)
+			http.Error(w, Error("error reading PUT body"), http.StatusBadRequest)
 			return
 		}
 
 		if err := db.Set(key, val); err != nil {
-			http.Error(w, "error setting value in DB", http.StatusInternalServerError)
+			http.Error(w, Error("error setting value in DB"), http.StatusInternalServerError)
 			return
 		}
 
