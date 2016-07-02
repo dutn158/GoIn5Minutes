@@ -1,16 +1,15 @@
 package storage
 
 import (
-    "errors"
+	"errors"
 )
 
 var (
-    ErrNotFound = errors.New("not found")
+	ErrNotFound = errors.New("not found")
 )
 
 type DB interface {
+	Get(key string) ([]byte, error)
 
-  Get(key string) ([]byte, error)
-
-  Set(key string, []byte) error
+	Set(key string, val []byte) error
 }
