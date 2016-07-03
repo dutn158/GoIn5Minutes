@@ -1,0 +1,2 @@
+- cd go/src/crypto/tls
+- go run generate_cert.go --host=localhost

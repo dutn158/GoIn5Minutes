@@ -1,0 +1,5 @@
+# set a value
+curl -v -XPUT -d 'thanks for watching, gophers!' localhost:3000/set?key=greeting
+
+# get a value
+curl -v -XGET localhost:3000/get?key=greeting
