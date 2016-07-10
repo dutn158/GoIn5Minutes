@@ -11,6 +11,18 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Login handle login to server
+func Login(w http.ResponseWriter, r *http.Request) {
+	// var user User
+	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	if err != nil {
+		panic(err)
+	}
+
+	w.Write(body)
+
+}
+
 // Index handle "/" request
 func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Welcome, %q", html.EscapeString(r.URL.Path))
@@ -37,7 +49,7 @@ func TodoShow(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Todo show: %q", todoID)
 }
 
-// TotoCreate... handle "/todos" request with POST
+// TotoCreate ... handle "/todos" request with POST
 func TodoCreate(w http.ResponseWriter, r *http.Request) {
 	var todo Todo
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
