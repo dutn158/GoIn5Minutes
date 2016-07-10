@@ -14,7 +14,7 @@ func init() {
 // RepoCreateTodo create a todo
 func RepoCreateTodo(t Todo) Todo {
 	currentID++
-	t.Id = currentID
+	t.ID = currentID
 	todos = append(todos, t)
 	return t
 }
@@ -22,7 +22,7 @@ func RepoCreateTodo(t Todo) Todo {
 // RepoFindTodo find a todo with id
 func RepoFindTodo(id int) Todo {
 	for _, t := range todos {
-		if t.Id == id {
+		if t.ID == id {
 			return t
 		}
 	}
@@ -32,7 +32,7 @@ func RepoFindTodo(id int) Todo {
 // RepoDestroyTodo delete a todo with id
 func RepoDestroyTodo(id int) error {
 	for i, t := range todos {
-		if t.Id == id {
+		if t.ID == id {
 			todos = append(todos[:i], todos[i+1:]...)
 			return nil
 		}
