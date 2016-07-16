@@ -76,7 +76,7 @@ func main() {
 
 	// Query All
 	// Query All
-	err = c.Find(bson.M{"name": "Ale"}).Sort("-timestamp").All(&results)
+	err = c.Find(bson.M{}).Sort("-timestamp").All(&results)
 
 	if err != nil {
 		panic(err)
