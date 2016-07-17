@@ -28,7 +28,7 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	mux := mux.NewRouter()
-	mux.HandleFunc("/api/{user:[0-9]+}", Hello)
+	mux.HandleFunc("/api/{user:[0-9a-zA-Z]+}", Hello)
 	http.Handle("/", mux)
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
